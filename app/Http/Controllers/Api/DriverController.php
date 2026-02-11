@@ -12,9 +12,9 @@ class DriverController extends Controller
     public function updateLocation(Request $request)
     {
         $request->validate([
-            'driver_id' => 'required',
-            'latitude' => 'required',
-            'longitude' => 'required',
+            'driver_id' => 'required|numeric',
+            'latitude' => 'required|numeric|between:-90,90',
+            'longitude' => 'required|numeric|between:-180,180',
         ]);
 
         return response()->json(['message' => 'Location updated']);
@@ -60,6 +60,10 @@ class DriverController extends Controller
 
     public function requestRide(Request $request, Ride $ride)
     {
+        $request->validate([
+            'driver_id' => 'required|numeric'
+        ]);
+
         $ride->update([
             'driver_id' => $request->driver_id,
             'status' => 'driver_requested'

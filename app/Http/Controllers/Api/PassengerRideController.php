@@ -11,11 +11,11 @@ class PassengerRideController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'pickup_lat' => 'required',
-            'pickup_lng' => 'required',
-            'destination_lat' => 'required',
-            'destination_lng' => 'required',
-            'passenger_id' => 'required'
+            'pickup_lat' => 'required|numeric|between:-90,90',
+            'pickup_lng' => 'required|numeric|between:-180,180',
+            'destination_lat' => 'required|numeric|between:-90,90',
+            'destination_lng' => 'required|numeric|between:-180,180',
+            'passenger_id' => 'required|numeric'
         ]);
 
         $rideAlreadyExists = Ride::where('passenger_id', $request->passenger_id)
@@ -42,7 +42,7 @@ class PassengerRideController extends Controller
     public function approveDriver(Request $request, Ride $ride)
     {
         $request->validate([
-            'driver_id' => 'required'
+            'driver_id' => 'required|numeric'
         ]);
 
         $ride->update([
