@@ -1,0 +1,253 @@
+{
+  "info": {
+    "_postman_id": "5f87797d-4bbc-49eb-913e-4d5acf07ddc8",
+    "name": "Ride Request Collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "id": "c6c33cf8-305d-4f8d-a91a-ef13795821eb",
+      "name": "Passenger",
+      "item": [
+        {
+          "id": "28add5be-aa0d-437f-9901-151b7c661bbb",
+          "name": "Approve Driver (Passenger)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"driver_id\": 10\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseurl}}/api/passenger/rides/{{ride_id}}/approve-driver",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "api",
+                "passenger",
+                "rides",
+                "{{ride_id}}",
+                "approve-driver"
+              ],
+              "protocol": "https"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "7a182c76-9121-4015-9bdb-e2836064650a",
+          "name": "Passenger Marks Ride Completed",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseurl}}/api/passenger/rides/{{ride_id}}/complete",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "api",
+                "passenger",
+                "rides",
+                "{{ride_id}}",
+                "complete"
+              ],
+              "protocol": "https"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "28fe373b-f3dd-46fe-b0d8-740223744160",
+          "name": "Passenger Requests a ride",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"passenger_id\": 5,\n  \"pickup_lat\": 28.4595,\n  \"pickup_lng\": 77.0266,\n  \"destination_lat\": 28.9845,\n  \"destination_lng\": 77.7064\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseurl}}/api/passenger/rides",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "api",
+                "passenger",
+                "rides"
+              ],
+              "protocol": "https"
+            }
+          },
+          "response": [],
+          "event": []
+        }
+      ],
+      "variable": []
+    },
+    {
+      "id": "e3b511fb-1ec6-4e14-9b9c-efbbd0472962",
+      "name": "RIder",
+      "item": [
+        {
+          "id": "2b4abdee-18ce-48c3-863e-903f1d58680c",
+          "name": "Driver Marks Ride Completed",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseurl}}/api/driver/rides/{{ride_id}}/complete",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "api",
+                "driver",
+                "rides",
+                "{{ride_id}}",
+                "complete"
+              ],
+              "protocol": "https"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "a1887b90-7917-4e13-ad3a-bc01996b1ef3",
+          "name": "Driver Requests / Claims Ride",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"driver_id\": 10\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseurl}}/api/driver/rides/{{ride_id}}/request",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "api",
+                "driver",
+                "rides",
+                "{{ride_id}}",
+                "request"
+              ],
+              "protocol": "https"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "015f06f1-1bf1-4756-9b48-153e6ab4255a",
+          "name": "Fetch Nearby Pending Rides",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseurl}}/api/driver/rides/nearby?lat=28.6139&lng=77.2090&radius=30",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "api",
+                "driver",
+                "rides",
+                "nearby"
+              ],
+              "protocol": "https",
+              "query": [
+                {
+                  "key": "lat",
+                  "value": "28.6139",
+                  "disabled": false
+                },
+                {
+                  "key": "lng",
+                  "value": "77.2090",
+                  "disabled": false
+                },
+                {
+                  "key": "radius",
+                  "value": "5",
+                  "disabled": false
+                }
+              ]
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "de7b247a-f51e-4715-95f4-f0dc659c4007",
+          "name": "Update Driver Location",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"driver_id\": 10,\n  \"latitude\": 28.6139,\n  \"longitude\": 77.2090\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseurl}}/api/driver/location",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "api",
+                "driver",
+                "location"
+              ],
+              "protocol": "https"
+            }
+          },
+          "response": [],
+          "event": []
+        }
+      ],
+      "variable": []
+    }
+  ],
+  "variable": [
+    {
+      "id": "eda34740-373b-4d2a-bbba-466532d8461c",
+      "key": "baseurl",
+      "value": "http://127.0.0.1:8000",
+      "type": "default"
+    },
+    {
+      "id": "7184d77e-72d6-4d2a-a555-aaea33828394",
+      "key": "ride_id",
+      "value": 1,
+      "type": "number"
+    }
+  ]
+}
