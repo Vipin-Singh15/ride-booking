@@ -11,7 +11,7 @@ class AdminRideController extends Controller
     {
         $allowed = ['id', 'status', 'created_at'];
         $sort = $request->get('sort', 'id');
-        if (! in_array($sort, $allowed)) {
+        if (!in_array($sort, $allowed)) {
             $sort = 'id';
         }
 
@@ -26,4 +26,12 @@ class AdminRideController extends Controller
     {
         return view('admin.rides.show', compact('ride'));
     }
+
+    public function destroy(Ride $ride)
+    {
+        $ride->delete();
+
+        return redirect()->back()->with('success', 'Ride deleted successfully.');
+    }
+
 }

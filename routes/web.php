@@ -21,3 +21,6 @@ Route::get('/', function () {
 
 Route::get('/admin/rides', [AdminRideController::class, 'index']);
 Route::get('/admin/rides/{ride}', [AdminRideController::class, 'show']);
+Route::delete('/admin/rides/{ride}', [AdminRideController::class, 'destroy'])
+    ->name('admin.rides.destroy');
+
